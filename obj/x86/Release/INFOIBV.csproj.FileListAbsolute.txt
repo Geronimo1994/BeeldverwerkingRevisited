@@ -1,0 +1,25 @@
+D:\Shared\Image Processing\assignment\INFOIBV\bin\Release\INFOIBV.exe
+D:\Shared\Image Processing\assignment\INFOIBV\bin\Release\INFOIBV.pdb
+D:\Shared\Image Processing\assignment\INFOIBV\obj\x86\Release\ResolveAssemblyReference.cache
+D:\Shared\Image Processing\assignment\INFOIBV\obj\x86\Release\INFOIBV.INFOIBV.resources
+D:\Shared\Image Processing\assignment\INFOIBV\obj\x86\Release\INFOIBV.Properties.Resources.resources
+D:\Shared\Image Processing\assignment\INFOIBV\obj\x86\Release\GenerateResource.read.1.tlog
+D:\Shared\Image Processing\assignment\INFOIBV\obj\x86\Release\GenerateResource.write.1.tlog
+D:\Shared\Image Processing\assignment\INFOIBV\obj\x86\Release\INFOIBV.exe
+D:\Shared\Image Processing\assignment\INFOIBV\obj\x86\Release\INFOIBV.pdb
+C:\Users\Joris\Documents\Visual Studio 2013\Projects\INFOIBV\bin\Release\INFOIBV.exe
+C:\Users\Joris\Documents\Visual Studio 2013\Projects\INFOIBV\bin\Release\INFOIBV.pdb
+C:\Users\Joris\Documents\Visual Studio 2013\Projects\INFOIBV\obj\x86\Release\INFOIBV.csprojResolveAssemblyReference.cache
+C:\Users\Joris\Documents\Visual Studio 2013\Projects\INFOIBV\obj\x86\Release\INFOIBV.INFOIBV.resources
+C:\Users\Joris\Documents\Visual Studio 2013\Projects\INFOIBV\obj\x86\Release\INFOIBV.Properties.Resources.resources
+C:\Users\Joris\Documents\Visual Studio 2013\Projects\INFOIBV\obj\x86\Release\INFOIBV.csproj.GenerateResource.Cache
+C:\Users\Joris\Documents\Visual Studio 2013\Projects\INFOIBV\obj\x86\Release\INFOIBV.exe
+C:\Users\Joris\Documents\Visual Studio 2013\Projects\INFOIBV\obj\x86\Release\INFOIBV.pdb
+D:\Uni\Beeldverwerking\Assignment\Beeldverwerking\obj\x86\Release\INFOIBV.exe
+D:\Uni\Beeldverwerking\Assignment\Beeldverwerking\obj\x86\Release\INFOIBV.pdb
+D:\Uni\Beeldverwerking\Assignment\Beeldverwerking\bin\Release\INFOIBV.exe
+D:\Uni\Beeldverwerking\Assignment\Beeldverwerking\bin\Release\INFOIBV.pdb
+D:\Uni\Beeldverwerking\Assignment\Beeldverwerking\obj\x86\Release\INFOIBV.csprojResolveAssemblyReference.cache
+D:\Uni\Beeldverwerking\Assignment\Beeldverwerking\obj\x86\Release\INFOIBV.INFOIBV.resources
+D:\Uni\Beeldverwerking\Assignment\Beeldverwerking\obj\x86\Release\INFOIBV.Properties.Resources.resources
+D:\Uni\Beeldverwerking\Assignment\Beeldverwerking\obj\x86\Release\INFOIBV.csproj.GenerateResource.Cache

@@ -1,0 +1,9 @@
+D:\Shared\Image Processing\assignment\INFOIBV\bin\Debug\INFOIBV.exe
+D:\Shared\Image Processing\assignment\INFOIBV\bin\Debug\INFOIBV.pdb
+D:\Shared\Image Processing\assignment\INFOIBV\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\Shared\Image Processing\assignment\INFOIBV\obj\x86\Debug\INFOIBV.INFOIBV.resources
+D:\Shared\Image Processing\assignment\INFOIBV\obj\x86\Debug\INFOIBV.Properties.Resources.resources
+D:\Shared\Image Processing\assignment\INFOIBV\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\Shared\Image Processing\assignment\INFOIBV\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\Shared\Image Processing\assignment\INFOIBV\obj\x86\Debug\INFOIBV.exe
+D:\Shared\Image Processing\assignment\INFOIBV\obj\x86\Debug\INFOIBV.pdb
