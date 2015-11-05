@@ -23,3 +23,11 @@ D:\Uni\Beeldverwerking\Assignment\Beeldverwerking\obj\x86\Release\INFOIBV.csproj
 D:\Uni\Beeldverwerking\Assignment\Beeldverwerking\obj\x86\Release\INFOIBV.INFOIBV.resources
 D:\Uni\Beeldverwerking\Assignment\Beeldverwerking\obj\x86\Release\INFOIBV.Properties.Resources.resources
 D:\Uni\Beeldverwerking\Assignment\Beeldverwerking\obj\x86\Release\INFOIBV.csproj.GenerateResource.Cache
+C:\Users\Slim_Cognito\Documents\Visual Studio 2015\Projects\BeeldverwerkingRevisited\obj\x86\Release\INFOIBV.exe
+C:\Users\Slim_Cognito\Documents\Visual Studio 2015\Projects\BeeldverwerkingRevisited\obj\x86\Release\INFOIBV.pdb
+C:\Users\Slim_Cognito\Documents\Visual Studio 2015\Projects\BeeldverwerkingRevisited\bin\Release\INFOIBV.exe
+C:\Users\Slim_Cognito\Documents\Visual Studio 2015\Projects\BeeldverwerkingRevisited\bin\Release\INFOIBV.pdb
+C:\Users\Slim_Cognito\Documents\Visual Studio 2015\Projects\BeeldverwerkingRevisited\obj\x86\Release\INFOIBV.csprojResolveAssemblyReference.cache
+C:\Users\Slim_Cognito\Documents\Visual Studio 2015\Projects\BeeldverwerkingRevisited\obj\x86\Release\INFOIBV.INFOIBV.resources
+C:\Users\Slim_Cognito\Documents\Visual Studio 2015\Projects\BeeldverwerkingRevisited\obj\x86\Release\INFOIBV.Properties.Resources.resources
+C:\Users\Slim_Cognito\Documents\Visual Studio 2015\Projects\BeeldverwerkingRevisited\obj\x86\Release\INFOIBV.csproj.GenerateResource.Cache

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace INFOIBV
@@ -20,6 +21,7 @@ namespace INFOIBV
         {
             InitializeComponent();
         }
+        
 
         private void LoadImageButton_Click(object sender, EventArgs e)
         {
@@ -39,17 +41,18 @@ namespace INFOIBV
 
         private void applyButton_Click(object sender, EventArgs e)
         {
+            Thread thread = new Thread(new ThreadStart(DoIt));
+            thread.Start();
+            applyButton.Enabled = false;
+        }
+
+        private void DoIt()
+        {
             if (InputImage == null) return;                                 // Get out if no input image
             if (OutputImage != null) OutputImage.Dispose();                 // Reset output image
             OutputImage = new Bitmap(InputImage.Size.Width, InputImage.Size.Height); // Create new output image
             Color[,] Image = new Color[InputImage.Size.Width, InputImage.Size.Height]; // Create array to speed-up operations (Bitmap functions are very slow)
 
-            // Setup progress bar
-            progressBar.Visible = true;
-            progressBar.Minimum = 1;
-            progressBar.Maximum = InputImage.Size.Width * InputImage.Size.Height;
-            progressBar.Value = 1;
-            progressBar.Step = 1;
 
             // Copy input Bitmap to array            
             for (int x = 0; x < InputImage.Size.Width; x++)
@@ -76,26 +79,51 @@ namespace INFOIBV
             //Vergelijk percentages van gevonden objecten en concludeer het merk van de auto.                      
             float HoogstePercentage = 0;
             string Merk = "undefined";
+            Point FirstPoint= new Point(0,0);
             Parallel.ForEach(LosObjectList, losobject =>
             {
                 if (losobject.AudiPercentage > HoogstePercentage)
                 {
                     HoogstePercentage = losobject.AudiPercentage;
                     Merk = "Audi";
+                    FirstPoint = losobject.FindWhitePixel();
                 }
                 if(losobject.VolksWagenPercentage > HoogstePercentage)
                 {
                     HoogstePercentage = losobject.VolksWagenPercentage;
                     Merk = "VolksWagen";
+                    FirstPoint = losobject.FindWhitePixel();
                 }
                 if(losobject.MazdaPercentage > HoogstePercentage)
                 {
                     HoogstePercentage = losobject.MazdaPercentage;
                     Merk = "Mazda";
+                    FirstPoint = losobject.FindWhitePixel();
                 }
             });
-            if( HoogstePercentage > 0.6)
+            if (HoogstePercentage > 0.6)
+            {
                 System.Windows.Forms.MessageBox.Show("Het merk is: " + Merk + HoogstePercentage);
+                int index = 0;
+                List<Point> Tevullen = new List<Point>();
+                int kleur;
+                Point LogoPoint = FirstPoint;
+                kleur = Image[LogoPoint.X, LogoPoint.Y].G;
+                Tevullen.Add(LogoPoint);
+                try
+                {
+                    while (Tevullen[index] != null)
+                    {
+                        ObjectMarkeren(InputImage, Image, Tevullen[index].X, Tevullen[index].Y, kleur, Tevullen, index);
+                        index += 1;
+                    }
+
+                }
+                catch
+                {
+                    //a fish
+                }
+            }
             else
                 System.Windows.Forms.MessageBox.Show("Geen autologo gevonden." + LosObjectList.Count());  // Geen merk kunnen vinden.
             
@@ -113,8 +141,22 @@ namespace INFOIBV
             }
             
             pictureBox2.Image = (Image)OutputImage;                         // Display output image
-            progressBar.Visible = false;                                    // Hide progress bar
+
         }
+
+        private void ObjectMarkeren(Bitmap InputImage, Color[,] Image, int x, int y, int kleur, List<Point> Tevullen, int index)
+        {
+            Image[x, y] = Color.Red;                              //Dit punt kleuren en de rest checken of ze gekleurd moeten worden en dan op de stack zetten.
+            if (x > 0 && Image[x - 1, y] == Color.FromArgb(kleur,kleur,kleur) && !Tevullen.Contains(new Point(x - 1, y)))
+                Tevullen.Add(new Point(x - 1, y));
+            if (y > 0 && Image[x, y - 1] == Color.FromArgb(kleur, kleur, kleur) && !Tevullen.Contains(new Point(x, y - 1)))
+                Tevullen.Add(new Point(x, y - 1));
+            if (y < InputImage.Size.Height - 1 && Image[x, y + 1] == Color.FromArgb(kleur, kleur, kleur) && !Tevullen.Contains(new Point(x, y + 1)))
+                Tevullen.Add(new Point(x, y + 1));
+            if (x < InputImage.Size.Width - 1 && Image[x + 1, y] == Color.FromArgb(kleur, kleur, kleur) && !Tevullen.Contains(new Point(x + 1, y)))
+                Tevullen.Add(new Point(x + 1, y));
+        }
+
 
         private void NegativeImage(Bitmap InputImage, Color[,] Image)
         {
@@ -125,7 +167,6 @@ namespace INFOIBV
                     Color pixelColor = Image[x, y];                         // Get the pixel color at coordinate (x,y)
                     Color updatedColor = Color.FromArgb(255 - pixelColor.R, 255 - pixelColor.G, 255 - pixelColor.B); // Negative image
                     Image[x, y] = updatedColor;                             // Set the new pixel color at coordinate (x,y)
-                    progressBar.PerformStep();                              // Increment progress bar
                 }
             }
         }  
@@ -139,7 +180,6 @@ namespace INFOIBV
                     Color pixelColor = Image[x, y];                         // Get the pixel color at coordinate (x,y)
                     Color updatedColor = Color.FromArgb((pixelColor.R + pixelColor.G + pixelColor.B) / 3, (pixelColor.R + pixelColor.G + pixelColor.B) / 3, (pixelColor.R + pixelColor.G + pixelColor.B) / 3); // Greyscale image
                     Image[x, y] = updatedColor;                             // Set the new pixel color at coordinate (x,y)
-                    progressBar.PerformStep();                              // Increment progress bar
                 }
             }
         }
@@ -158,7 +198,6 @@ namespace INFOIBV
                     }
 
                     Image[x, y] = updatedColor;                             // Set the new pixel color at coordinate (x,y).
-                    progressBar.PerformStep();                              // Increment progress bar.
                 }
             }
         }
@@ -200,7 +239,6 @@ namespace INFOIBV
                     else
                         Image[x, y] = Color.FromArgb(255, 255, 255);
                     
-                    progressBar.PerformStep();                              // Increment progress bar.
                 }
             }
         }
@@ -242,7 +280,6 @@ namespace INFOIBV
                     else
                         Image[x, y] = Color.FromArgb(0, 0, 0);
 
-                    progressBar.PerformStep();                              // Increment progress bar,
                 }
             }
         }
@@ -272,7 +309,6 @@ namespace INFOIBV
                             kleur += 1;
                             if (kleur == 0 || kleur == 255)     //Ook al staat dit hier we gaan er vanuit dat er geen 255 objecten in het plaatje zitten.
                                 kleur = 1;
-                            progressBar.PerformStep();
                         }
                     }
                 }
@@ -484,6 +520,19 @@ namespace INFOIBV
             return ((float)oppervlakte)/((float) ((endx-beginx)*(endy-beginy)));
         }
 
+        public Point FindWhitePixel()
+        {
+            Point point = new Point(0,0);
+            for(int x = 0; x < endx-beginx; x++)
+            {
+                if(Object[x,0] == Color.FromArgb(255,255,255))
+                {
+                    point = new Point(x+beginx,0+beginy);
+                    break;
+                }
+            }
+            return point;
+        }
 
     }
 
