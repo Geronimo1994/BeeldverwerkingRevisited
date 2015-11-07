@@ -41,7 +41,7 @@ namespace INFOIBV
         }
 
         private void applyButton_Click(object sender, EventArgs e)
-        {
+        {                                       // even een nieuw thread om de snelheid op te voeren
             Thread thread = new Thread(new ThreadStart(DoIt));
             thread.Start();
             applyButton.Enabled = false;
@@ -126,7 +126,7 @@ namespace INFOIBV
                 }
             }
             else
-                System.Windows.Forms.MessageBox.Show("Geen autologo gevonden." + LosObjectList.Count());  // Geen merk kunnen vinden.
+                System.Windows.Forms.MessageBox.Show("Geen autologo gevonden.");  // Geen merk kunnen vinden.
             
             
             
