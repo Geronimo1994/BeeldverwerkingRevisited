@@ -27,6 +27,7 @@ namespace INFOIBV
         {
            if (openImageDialog.ShowDialog() == DialogResult.OK)             // Open File Dialog
             {
+                applyButton.Enabled = true;
                 string file = openImageDialog.FileName;                     // Get the file name
                 imageFileName.Text = file;                                  // Show file name
                 if (InputImage != null) InputImage.Dispose();               // Reset image
@@ -103,7 +104,7 @@ namespace INFOIBV
             });
             if (HoogstePercentage > 0.6)
             {
-                System.Windows.Forms.MessageBox.Show("Het merk is: " + Merk + HoogstePercentage);
+                System.Windows.Forms.MessageBox.Show("Het merk is: " + Merk);
                 int index = 0;
                 List<Point> Tevullen = new List<Point>();
                 int kleur;
